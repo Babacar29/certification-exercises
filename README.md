@@ -70,6 +70,15 @@ sqoop import --table table1 \
 --last-value '2017-01-19 18:09:00'
 ```
 
+* Selecting the Data to Import
+** Import only specified columns
+```bash
+sqoop import --table table1 \
+--connect jdbc:mysql://dbhost/database1 \
+--username dbuser --password pw \
+--columns "column1,column2,column5"
+```
+
 ### Export data to a MySQL database from HDFS using Sqoop
 The export tool exports a set of files from HDFS back to an RDBMS. The target table must already exist in the database. The input files are read and parsed into a set of records according to the user-specified delimiters.
 
@@ -84,3 +93,5 @@ sqoop export \
 --update-mode allowinsert \
 --table table1
 ```
+
+
