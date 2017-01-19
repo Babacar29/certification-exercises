@@ -1,2 +1,4 @@
 # certification-exercises
-Exercises created by me for preparing the certification to CCA Spark and Hadoop Developer
+Exercises created by me for preparing the certification of CCA Spark and Hadoop Developer Certification
+
+
