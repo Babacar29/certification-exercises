@@ -71,13 +71,36 @@ sqoop import --table table1 \
 ```
 
 * Selecting the Data to Import
-** Import only specified columns
-```bash
-sqoop import --table table1 \
---connect jdbc:mysql://dbhost/database1 \
---username dbuser --password pw \
---columns "column1,column2,column5"
-```
+
+  * Import only specified columns
+
+  ```bash
+  sqoop import --table table1 \
+  --connect jdbc:mysql://dbhost/database1 \
+  --username dbuser --password pw \
+  --columns "column1,column2,column5"
+  ```
+  
+  * Filtering
+  ```bash
+  sqoop import --table table1 \
+  --connect jdbc:mysql://dbhost/database1 \
+  --username dbuser --password pw \
+  --where "column1='value1'"
+  ```
+  * Free form query imports
+  
+    Sqoop can also import the result set of an arbitrary SQL query. Instead of using the --table, --columns and --where arguments, you       can   specify a SQL statement with the --query argument.
+
+    When importing a free-form query, you must specify a destination directory with --target-dir.
+  
+    If you want to import the results of a query in parallel, then each map task will need to execute a copy of the query, with results     partitioned by bounding conditions inferred by Sqoop. Your query must include the token $CONDITIONS which each Sqoop process will       replace with a unique condition expression. You must also select a splitting column with --split-by.
+  
+  ```bash
+  sqoop import \
+  --query 'SELECT a.*, b.* FROM a JOIN b on (a.id == b.id) WHERE $CONDITIONS' \
+  --split-by a.id --target-dir /user/foo/joinresults
+  ```
 
 ### Export data to a MySQL database from HDFS using Sqoop
 The export tool exports a set of files from HDFS back to an RDBMS. The target table must already exist in the database. The input files are read and parsed into a set of records according to the user-specified delimiters.
