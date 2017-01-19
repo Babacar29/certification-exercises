@@ -16,13 +16,29 @@ sqoop list-tables \
 --username dbuser \
 --password pw
 ```
-* The *import-all-tables* imports an entire database to the specified path in ware-house dir option
+* The *import-all-tables* imports an entire database
+
 ```bash
 sqoop import-all-tables \
 --connect jdbc:mysql://dbhost/database1 \
 --username dbuser --password pw \
---warehouse-dir /example
 ```
+
+By default, Sqoop will import a table named foo to a directory named foo inside your home directory in HDFS. For example, if your username is someuser, then the import tool will write to /user/someuser/foo/(files). You can adjust the parent directory of the import with the --warehouse-dir argument. For example:
+
+```bash
+sqoop import --connnect <connect-str> --table foo --warehouse-dir /shared
+```
+This command would write to a set of files in the /shared/foo/ directory.
+
+You can also explicitly choose the target directory, like so:
+```bash
+sqoop import --connnect <connect-str> --table foo --target-dir /dest
+```
+
+This will import the files into the /dest directory. --target-dir is incompatible with --warehouse-dir.
+
+
 * The *import* imports a single table
 ```bash
 sqoop import --table table1 \
