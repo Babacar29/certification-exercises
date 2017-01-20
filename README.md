@@ -10,6 +10,7 @@
 sqoop help
 ````
 * The *list-tables* list all tables of a database
+
 ```bash
 sqoop list-tables \
 --connect jdbc:mysql://dbhost/database1 \
@@ -40,6 +41,7 @@ This will import the files into the /dest directory. --target-dir is incompatibl
 
 
 * The *import* imports a single table
+
 ```bash
 sqoop import --table table1 \
 --connect jdbc:mysql://dbhost/database1 \
@@ -82,19 +84,21 @@ sqoop import --table table1 \
   ```
 
   * Filtering
+
   ```bash
   sqoop import --table table1 \
   --connect jdbc:mysql://dbhost/database1 \
   --username dbuser --password pw \
   --where "column1='value1'"
   ```
+
   * Free form query imports
 
-    Sqoop can also import the result set of an arbitrary SQL query. Instead of using the --table, --columns and --where arguments, you       can   specify a SQL statement with the --query argument.
+  Sqoop can also import the result set of an arbitrary SQL query. Instead of using the --table, --columns and --where arguments, you       can   specify a SQL statement with the --query argument.
 
-    When importing a free-form query, you must specify a destination directory with --target-dir.
+  When importing a free-form query, you must specify a destination directory with --target-dir.
 
-    If you want to import the results of a query in parallel, then each map task will need to execute a copy of the query, with results     partitioned by bounding conditions inferred by Sqoop. Your query must include the token $CONDITIONS which each Sqoop process will       replace with a unique condition expression. You must also select a splitting column with --split-by.
+  If you want to import the results of a query in parallel, then each map task will need to execute a copy of the query, with results     partitioned by bounding conditions inferred by Sqoop. Your query must include the token $CONDITIONS which each Sqoop process will       replace with a unique condition expression. You must also select a splitting column with --split-by.
 
   ```bash
   sqoop import \
