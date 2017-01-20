@@ -1,4 +1,4 @@
-# Exercises created by me for preparing the certification of CCA Spark and Hadoop Developer Certification
+# Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ## Data Ingest
 
@@ -49,7 +49,7 @@ sqoop import --table table1 \
 * Sqoop’s incremental mode
 
 Argument | Description
---- | --- 
+--- | ---
 --check-column (col) | Specifies the column to be examined when determining which rows to import.
 --incremental (mode) | Specifies how Sqoop determines which rows are new. Legal values for mode include append and lastmodified.
 --last-value (value) | Specifies the maximum value of the check column from the previous import.
@@ -80,7 +80,7 @@ sqoop import --table table1 \
   --username dbuser --password pw \
   --columns "column1,column2,column5"
   ```
-  
+
   * Filtering
   ```bash
   sqoop import --table table1 \
@@ -89,13 +89,13 @@ sqoop import --table table1 \
   --where "column1='value1'"
   ```
   * Free form query imports
-  
+
     Sqoop can also import the result set of an arbitrary SQL query. Instead of using the --table, --columns and --where arguments, you       can   specify a SQL statement with the --query argument.
 
     When importing a free-form query, you must specify a destination directory with --target-dir.
-  
+
     If you want to import the results of a query in parallel, then each map task will need to execute a copy of the query, with results     partitioned by bounding conditions inferred by Sqoop. Your query must include the token $CONDITIONS which each Sqoop process will       replace with a unique condition expression. You must also select a splitting column with --split-by.
-  
+
   ```bash
   sqoop import \
   --query 'SELECT a.*, b.* FROM a JOIN b on (a.id == b.id) WHERE $CONDITIONS' \
@@ -116,5 +116,3 @@ sqoop export \
 --update-mode allowinsert \
 --table table1
 ```
-
-
