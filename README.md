@@ -27,7 +27,7 @@ In this page you can find a summary of the theory focused on the required skills
 
 For more information visit the following link: http://www.cloudera.com/training/certification/cca-spark.html
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ## 2. Data Ingest
 
@@ -140,7 +140,7 @@ sqoop import --table table1 \
   --split-by a.id --target-dir /user/foo/joinresults
   ```
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### ii. Export data to a MySQL database from HDFS using Sqoop
 The export tool exports a set of files from HDFS back to an RDBMS. The input files are read and parsed into a set of records according to the user-specified delimiters.
@@ -159,7 +159,7 @@ sqoop export \
 ```
 > :exclamation: The target table must already exist in the database.
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### iii. Change the delimiter and file format of data during import using Sqoop
 
@@ -232,13 +232,13 @@ Output line formatting arguments:
   --as-parquetfile
   ```
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### iv. Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### v. Load data into and out of HDFS using the Hadoop File System (FS) commands
 
@@ -260,7 +260,7 @@ hdfs dfs -rm -R [-skipTrash]
 ```
 > :exclamation: Be careful with `-skipTrash` option because it will bypass trash, if enabled, and delete the specified file(s) immediately. This can be useful when it is necessary to delete files from an over-quota directory.
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ## 3. Transform, Stage, Store
 
@@ -268,31 +268,31 @@ hdfs dfs -rm -R [-skipTrash]
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### ii. Join disparate datasets together using Spark
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### iii. Calculate aggregate statistics (e.g., average or sum) using Spark
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### iv. Filter data into a smaller dataset using Spark
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### v. Write a query that produces ranked or sorted data using Spark
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ## 4. Data Analysis
 
@@ -300,28 +300,28 @@ coming soon...
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### ii. Extract an Avro schema from a set of datafiles using avro-tools
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### iii. Create a table in the Hive metastore using the Avro file format and an external schema file
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### iv. Improve query performance by creating partitioned tables in the Hive metastore
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
 
 ### v. Evolve an Avro schema by changing JSON files
 
 coming soon...
 
-[[Back to table of contents]](#table-of-contents)
+> :back: [[Back to table of contents]](#table-of-contents)
