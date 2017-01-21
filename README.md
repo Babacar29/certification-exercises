@@ -1,9 +1,9 @@
 # Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ## Table of contents
-1. [Data Ingest] (#data-ingest)
- 1. [Import data from a MySQL database into HDFS using Sqoop](#import-data-from-a-mysql-database-into-hdfs-using-sqoop)
- 2. [Export data to a MySQL database from HDFS using Sqoop](#export-data-to-a-mysql-database-from-hdfs-using-sqoop)
+1. [Data Ingest] (#1-data-ingest)
+ 1. [Import data from a MySQL database into HDFS using Sqoop](#i-import-data-from-a-mysql-database-into-hdfs-using-sqoop)
+ 2. [Export data to a MySQL database from HDFS using Sqoop](#ii-export-data-to-a-mysql-database-from-hdfs-using-sqoop)
 
 ## 1. Data Ingest
 
