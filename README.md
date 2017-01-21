@@ -1,7 +1,7 @@
 # Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ### Table of contents
-[Data Ingest]: (#data-ingest)
+[Data Ingest] (#data-ingest)
 
 ## Data Ingest
 
