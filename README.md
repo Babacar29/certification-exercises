@@ -4,6 +4,10 @@
 1. [Data Ingest] (#1-data-ingest)
  1. [Import data from a MySQL database into HDFS using Sqoop](#i-import-data-from-a-mysql-database-into-hdfs-using-sqoop)
  2. [Export data to a MySQL database from HDFS using Sqoop](#ii-export-data-to-a-mysql-database-from-hdfs-using-sqoop)
+ 3. [Change the delimiter and file format of data during import using Sqoop]()
+ 4. [Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume]()
+ 5. [Load data into and out of HDFS using the Hadoop File System (FS) commands]()
+2. [Transform, Stage, Store]()
 
 ## 1. Data Ingest
 
@@ -127,5 +131,87 @@ sqoop export \
 --update-mode allowinsert \
 --table table1
 ```
+
+[[Back to table of contents]](#table-of-contents)
+
+### iii. Change the delimiter and file format of data during import using Sqoop
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### iv. Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### v. Load data into and out of HDFS using the Hadoop File System (FS) commands
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+## 2. Transform, Stage, Store
+
+### i. Load data from HDFS and store results back to HDFS using Spark
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### ii. Join disparate datasets together using Spark
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### iii. Calculate aggregate statistics (e.g., average or sum) using Spark
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### iv. Filter data into a smaller dataset using Spark
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### v. Write a query that produces ranked or sorted data using Spark
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+## 3. Data Analysis
+
+### i. Read and/or create a table in the Hive metastore in a given schema
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### ii. Extract an Avro schema from a set of datafiles using avro-tools
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### iii. Create a table in the Hive metastore using the Avro file format and an external schema file
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### iv. Improve query performance by creating partitioned tables in the Hive metastore
+
+coming soon...
+
+[[Back to table of contents]](#table-of-contents)
+
+### v. Evolve an Avro schema by changing JSON files
+
+coming soon...
 
 [[Back to table of contents]](#table-of-contents)
