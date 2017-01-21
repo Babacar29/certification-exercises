@@ -111,7 +111,7 @@ sqoop import --table table1 \
   --split-by a.id --target-dir /user/foo/joinresults
   ```
 
-[[Back to table of contents]](table-of-contents)
+[[Back to table of contents]](#table-of-contents)
 
 ### ii. Export data to a MySQL database from HDFS using Sqoop
 The export tool exports a set of files from HDFS back to an RDBMS. The target table must already exist in the database. The input files are read and parsed into a set of records according to the user-specified delimiters.
@@ -128,4 +128,4 @@ sqoop export \
 --table table1
 ```
 
-[[Back to table of contents]](table-of-contents)
+[[Back to table of contents]](#table-of-contents)
