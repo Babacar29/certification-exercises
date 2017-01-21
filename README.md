@@ -1,11 +1,13 @@
 # Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
-### Table of contents
-[Data Ingest] (#data-ingest)
+## Table of contents
+1. [Data Ingest] (#data-ingest)
+ 1. [Import data from a MySQL database into HDFS using Sqoop](#import-data-from-a-mysql-database-into-hdfs-using-sqoop)
+ 2. [Export data to a MySQL database from HDFS using Sqoop](#export-data-to-a-mysql-database-from-hdfs-using-sqoop)
 
-## Data Ingest
+## 1. Data Ingest
 
-### Import data from a MySQL database into HDFS using Sqoop
+### i. Import data from a MySQL database into HDFS using Sqoop
 
 * The *help* allows you to see a list of all tools
 
@@ -109,7 +111,7 @@ sqoop import --table table1 \
   --split-by a.id --target-dir /user/foo/joinresults
   ```
 
-### Export data to a MySQL database from HDFS using Sqoop
+### ii. Export data to a MySQL database from HDFS using Sqoop
 The export tool exports a set of files from HDFS back to an RDBMS. The target table must already exist in the database. The input files are read and parsed into a set of records according to the user-specified delimiters.
 
 The default operation is to transform these into a set of *INSERT* statements that inject the records into the database. In "update mode," Sqoop will generate *UPDATE* statements that replace existing records in the database.
