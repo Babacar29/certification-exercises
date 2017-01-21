@@ -1,6 +1,7 @@
 # Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ## Table of contents
+0. [Introduction](#0-Introduction)
 1. [Data Ingest](#1-data-ingest)
  1. [Import data from a MySQL database into HDFS using Sqoop](#i-import-data-from-a-mysql-database-into-hdfs-using-sqoop)
  2. [Export data to a MySQL database from HDFS using Sqoop](#ii-export-data-to-a-mysql-database-from-hdfs-using-sqoop)
@@ -19,6 +20,12 @@
   3. [Create a table in the Hive metastore using the Avro file format and an external schema file](#iii-create-a-table-in-the-hive-metastore-using-the-avro-file-format-and-an-external-schema-file)
   4. [Improve query performance by creating partitioned tables in the Hive metastore](#iv-improve-query-performance-by-creating-partitioned-tables-in-the-hive-metastore)
   5. [Evolve an Avro schema by changing JSON files](#v-evolve-an-avro-schema-by-changing-json-files)
+
+## 0. Introduction
+
+In this page you can find a summary of the theory focused on the required skills of CCA Spark and Hadoop Developer Certification.
+
+For more information visit the following link: http://www.cloudera.com/training/certification/cca-spark.html
 
 ## 1. Data Ingest
 
