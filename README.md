@@ -1,13 +1,24 @@
 # Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ## Table of contents
-1. [Data Ingest] (#1-data-ingest)
+1. [Data Ingest](#1-data-ingest)
  1. [Import data from a MySQL database into HDFS using Sqoop](#i-import-data-from-a-mysql-database-into-hdfs-using-sqoop)
  2. [Export data to a MySQL database from HDFS using Sqoop](#ii-export-data-to-a-mysql-database-from-hdfs-using-sqoop)
- 3. [Change the delimiter and file format of data during import using Sqoop]()
- 4. [Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume]()
- 5. [Load data into and out of HDFS using the Hadoop File System (FS) commands]()
-2. [Transform, Stage, Store]()
+ 3. [Change the delimiter and file format of data during import using Sqoop](#iii-change-the-delimiter-and-file-format-of-data-during-import-using-sqoop)
+ 4. [Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume](#iv-ingest-real-time-and-near-real-time-nrt-streaming-data-into-hdfs-using-flume)
+ 5. [Load data into and out of HDFS using the Hadoop File System (FS) commands](#v-load-data-into-and-out-of-hdfs-using-the-hadoop-file-system-fs-commands)
+2. [Transform, Stage, Store](#2-transform-stage-store)
+  1. [Load data from HDFS and store results back to HDFS using Spark](#i-load-data-from-hdfs-and-store-results-back-to-hdfs-using-spark)
+  2. [Join disparate datasets together using Spark](#ii-join-disparate-datasets-together-using-spark)
+  3. [Calculate aggregate statistics (e.g., average or sum) using Spark](#iii-calculate-aggregate-statistics-eg-average-or-sum-using-spark)
+  4. [Filter data into a smaller dataset using Spark](#iv-filter-data-into-a-smaller-dataset-using-spark)
+  5. [Write a query that produces ranked or sorted data using Spark](#v-write-a-query-that-produces-ranked-or-sorted-data-using-spark)
+3. [Data Analysis](#3-data-analysis)
+  1. [Read and/or create a table in the Hive metastore in a given schema](#i-read-andor-create-a-table-in-the-hive-metastore-in-a-given-schema)
+  2. [Extract an Avro schema from a set of datafiles using avro-tools](#ii-extract-an-avro-schema-from-a-set-of-datafiles-using-avro-tools)
+  3. [Create a table in the Hive metastore using the Avro file format and an external schema file](#iii-create-a-table-in-the-hive-metastore-using-the-avro-file-format-and-an-external-schema-file)
+  4. [Improve query performance by creating partitioned tables in the Hive metastore](#iv-improve-query-performance-by-creating-partitioned-tables-in-the-hive-metastore)
+  5. [Evolve an Avro schema by changing JSON files](#v-evolve-an-avro-schema-by-changing-json-files)
 
 ## 1. Data Ingest
 
