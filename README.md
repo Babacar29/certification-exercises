@@ -11,12 +11,12 @@
 
 * The *help* allows you to see a list of all tools
 
-```bash
+```
 sqoop help
-````
+```
 * The *list-tables* list all tables of a database
 
-```bash
+```
 sqoop list-tables \
 --connect jdbc:mysql://dbhost/database1 \
 --username dbuser \
@@ -24,7 +24,7 @@ sqoop list-tables \
 ```
 * The *import-all-tables* imports an entire database
 
-```bash
+```
 sqoop import-all-tables \
 --connect jdbc:mysql://dbhost/database1 \
 --username dbuser --password pw \
@@ -32,13 +32,13 @@ sqoop import-all-tables \
 
 By default, Sqoop will import a table named foo to a directory named foo inside your home directory in HDFS. For example, if your username is someuser, then the import tool will write to /user/someuser/foo/(files). You can adjust the parent directory of the import with the --warehouse-dir argument. For example:
 
-```bash
+```
 sqoop import --connnect <connect-str> --table foo --warehouse-dir /shared
 ```
 This command would write to a set of files in the /shared/foo/ directory.
 
 You can also explicitly choose the target directory, like so:
-```bash
+```
 sqoop import --connnect <connect-str> --table foo --target-dir /dest
 ```
 
@@ -47,7 +47,7 @@ This will import the files into the /dest directory. --target-dir is incompatibl
 
 * The *import* imports a single table
 
-```bash
+```
 sqoop import --table table1 \
 --connect jdbc:mysql://dbhost/database1 \
 --username dbuser --password pw \
@@ -68,7 +68,7 @@ An alternate table update strategy supported by Sqoop is called lastmodified mod
 At the end of an incremental import, the value which should be specified as --last-value for a subsequent import is printed to the screen. When running a subsequent import, you should specify --last-value in this way to ensure you import only the new or updated data.
 
 Example:
-```bash
+```
 sqoop import --table table1 \
 --connect jdbc:mysql://dbhost/database1 \
 --username dbuser --password pw \
@@ -81,7 +81,7 @@ sqoop import --table table1 \
 
   * Import only specified columns
 
-  ```bash
+  ```
   sqoop import --table table1 \
   --connect jdbc:mysql://dbhost/database1 \
   --username dbuser --password pw \
@@ -90,7 +90,7 @@ sqoop import --table table1 \
 
   * Filtering
 
-  ```bash
+  ```
   sqoop import --table table1 \
   --connect jdbc:mysql://dbhost/database1 \
   --username dbuser --password pw \
@@ -105,7 +105,7 @@ sqoop import --table table1 \
 
   If you want to import the results of a query in parallel, then each map task will need to execute a copy of the query, with results     partitioned by bounding conditions inferred by Sqoop. Your query must include the token $CONDITIONS which each Sqoop process will       replace with a unique condition expression. You must also select a splitting column with --split-by.
 
-  ```bash
+  ```
   sqoop import \
   --query 'SELECT a.*, b.* FROM a JOIN b on (a.id == b.id) WHERE $CONDITIONS' \
   --split-by a.id --target-dir /user/foo/joinresults
@@ -117,7 +117,7 @@ The export tool exports a set of files from HDFS back to an RDBMS. The target ta
 The default operation is to transform these into a set of *INSERT* statements that inject the records into the database. In "update mode," Sqoop will generate *UPDATE* statements that replace existing records in the database.
 
 NOTE: The RDBMS table must already exist prior to export
-```bash
+```
 sqoop export \
 --connect jdbc:mysql://dbhost/database1 \
 --username dbuser --password pw \
