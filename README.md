@@ -143,7 +143,7 @@ sqoop import --table table1 \
 [[Back to table of contents]](#table-of-contents)
 
 ### ii. Export data to a MySQL database from HDFS using Sqoop
-The export tool exports a set of files from HDFS back to an RDBMS. *The target table must already exist in the database.* The input files are read and parsed into a set of records according to the user-specified delimiters.
+The export tool exports a set of files from HDFS back to an RDBMS. The input files are read and parsed into a set of records according to the user-specified delimiters.
 
 The default operation is to transform these into a set of *INSERT* statements that inject the records into the database. In `--update mode`, Sqoop will generate *UPDATE* statements that replace existing records in the database.
 
@@ -157,6 +157,7 @@ sqoop export \
 --update-mode allowinsert \
 --table table1
 ```
+> :exclamation: The target table must already exist in the database.
 
 [[Back to table of contents]](#table-of-contents)
 
@@ -241,7 +242,23 @@ coming soon...
 
 ### v. Load data into and out of HDFS using the Hadoop File System (FS) commands
 
-coming soon...
+Show the content of HDFS directory:
+```
+hdfs dfs -ls
+```
+Upload a file to HDFS:
+```
+hdfs dfs -put <localDocumentName> <HDFSDocumentName>
+```
+Download a file to Local from HDFS:
+```
+hdfs dfs -get <HDFS directory>/<HDFS filename> <Localfilename>
+```
+Remove a fields from HDFS:
+```
+hdfs dfs -rm -R [-skipTrash]
+```
+> :exclamation: Be careful with `-skipTrash` option because it will bypass trash, if enabled, and delete the specified file(s) immediately. This can be useful when it is necessary to delete files from an over-quota directory.
 
 [[Back to table of contents]](#table-of-contents)
 
