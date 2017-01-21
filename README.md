@@ -184,10 +184,10 @@ Output line formatting arguments:
 
 | Argument | Description     
 | :------------- | :-------------
-|--enclosed-by <char>	| Sets a required field enclosing character
-|--escaped-by <char>	| Sets the escape character
-|--fields-terminated-by <char>	| Sets the field separator character
-|--lines-terminated-by <char>	|Sets the end-of-line character
+|--enclosed-by (char)	| Sets a required field enclosing character
+|--escaped-by (char)	| Sets the escape character
+|--fields-terminated-by (char)	| Sets the field separator character
+|--lines-terminated-by (char)	|Sets the end-of-line character
 
 
 * File format of data
