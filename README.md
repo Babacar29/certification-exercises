@@ -162,45 +162,74 @@ sqoop export \
 
 ### iii. Change the delimiter and file format of data during import using Sqoop
 
-* Import as hive table
+* Change the delimiter
 
-```
-sqoop import \
---connect jdbc:mysql://localhost/database1 \
---username dbuser \
---password pw \
---fields-terminated-by ',' \
---table table1 \
---hive-database hivedatabase1 \
---hive-table hivetable1 \
---hive-import
-```
+  The default delimiters are a comma (,) for fields, a newline (\n) for records, no quote character, and no escape character.
 
-* Import as avro data file
+  Delimiters may be specified as:
 
-sqoop import saves the schema in a JSON file in the local path where the sqoop sentence is executed.
+    - a character (--fields-terminated-by X)
+    - an escape character (--fields-terminated-by \t). Examples of escape characters are:
+      - \b (backspace)
+      - \n (newline)
+      - \r (carriage return)
+      - \t (tab)
+      - \" (double-quote)
+      - \' (single-quote)
+      - \\\ (backslash)
+    - The octal representation of a UTF-8 character's code point. This should be of the form \\0ooo, where ooo is the octal value. For example, `--fields-terminated-by` \001 would yield the ^A character.
+    - The hexadecimal representation of a UTF-8 character's code point. This should be of the form \0xhhh, where hhh is the hex value. For example, `--fields-terminated-by` \0x10 would yield the carriage return character.
 
-```
-sqoop import \
---connect jdbc:mysql://localhost/database1 \
---username dbuser \
---password pw \
---table table1 \
---target-dir /foo/file_avro \
---as-avrodatafile
-```
+Output line formatting arguments:
 
-* Import as parquet file
+| Argument | Description     
+| :------------- | :-------------
+|--enclosed-by <char>	| Sets a required field enclosing character
+|--escaped-by <char>	| Sets the escape character
+|--fields-terminated-by <char>	| Sets the field separator character
+|--lines-terminated-by <char>	|Sets the end-of-line character
 
-```
-sqoop import \
---connect jdbc:mysql://localhost/database1 \
---username dbuser \
---password pw \
---table table1 \
---target-dir /foo/file_parquet \
---as-parquetfile
-```
+
+* File format of data
+  * Import as hive table
+
+  ```
+  sqoop import \
+  --connect jdbc:mysql://localhost/database1 \
+  --username dbuser \
+  --password pw \
+  --fields-terminated-by ',' \
+  --table table1 \
+  --hive-database hivedatabase1 \
+  --hive-table hivetable1 \
+  --hive-import
+  ```
+
+  * Import as avro data file
+
+  sqoop import saves the schema in a JSON file in the local path where the sqoop sentence is executed.
+
+  ```
+  sqoop import \
+  --connect jdbc:mysql://localhost/database1 \
+  --username dbuser \
+  --password pw \
+  --table table1 \
+  --target-dir /foo/file_avro \
+  --as-avrodatafile
+  ```
+
+  * Import as parquet file
+
+  ```
+  sqoop import \
+  --connect jdbc:mysql://localhost/database1 \
+  --username dbuser \
+  --password pw \
+  --table table1 \
+  --target-dir /foo/file_parquet \
+  --as-parquetfile
+  ```
 
 [[Back to table of contents]](#table-of-contents)
 
