@@ -309,7 +309,7 @@ flume-ng agent --conf /etc/flume-ng/conf \
   * HDFS sink
 
   This sink writes events into the Hadoop Distributed File System (HDFS). It currently supports creating text (`DataStream`) and `SequenceFile` (default). It supports compression in both file types. The files can be rolled (close current file and create a new one) periodically based on the elapsed time or size of data or number of events. It also buckets/partitions data by attributes like timestamp or machine where the event originated.
-  
+
   Example for agent named a1:
 
   ```
@@ -360,13 +360,82 @@ hdfs dfs -rm -R [-skipTrash]
 
 ### i. Load data from HDFS and store results back to HDFS using Spark
 
-coming soon...
+In this example, we use a few transformations to build a dataset of (String, Int) pairs called counts and then save it to a file.
+
+```scala
+val textFile = sc.textFile("hdfs://...")
+val counts = textFile.flatMap(line => line.split(" "))
+                 .map(word => (word, 1))
+                 .reduceByKey(_ + _)
+counts.saveAsTextFile("hdfs://...")
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
 ### ii. Join disparate datasets together using Spark
 
-coming soon...
+* SPARK RDD
+
+  * Join [Pair]
+
+  Performs an inner join using two key-value RDDs. Please note that the keys must be generally comparable to make this work.
+
+  Listing Variants
+  ```scala
+  def join[W](other: RDD[(K, W)]): RDD[(K, (V, W))]
+  def join[W](other: RDD[(K, W)], numPartitions: Int): RDD[(K, (V, W))]
+  def join[W](other: RDD[(K, W)], partitioner: Partitioner): RDD[(K, (V, W))]
+  ```
+
+  Example
+
+  ```scala
+  val a = sc.parallelize(List("dog", "salmon", "salmon", "rat", "elephant"), 3)
+  val b = a.keyBy(_.length)
+  val c = sc.parallelize(List("dog","cat","gnu","salmon","rabbit","turkey","wolf","bear","bee"), 3)
+  val d = c.keyBy(_.length)
+  b.join(d).collect
+
+  res0: Array[(Int, (String, String))] = Array((6,(salmon,salmon)), (6,(salmon,rabbit)), (6,(salmon,turkey)), (6,(salmon,salmon)), (6,(salmon,rabbit)), (6,(salmon,turkey)), (3,(dog,dog)), (3,(dog,cat)), (3,(dog,gnu)), (3,(dog,bee)), (3,(rat,dog)), (3,(rat,cat)), (3,(rat,gnu)), (3,(rat,bee)))
+  ```
+
+  * leftOuterJoin [Pair]
+
+  Performs an left outer join using two key-value RDDs. Please note that the keys must be generally comparable to make this work correctly.
+
+  Listing Variants
+
+  ```scala
+  def leftOuterJoin[W](other: RDD[(K, W)]): RDD[(K, (V, Option[W]))]
+  def leftOuterJoin[W](other: RDD[(K, W)], numPartitions: Int): RDD[(K, (V, Option[W]))]
+  def leftOuterJoin[W](other: RDD[(K, W)], partitioner: Partitioner): RDD[(K, (V, Option[W]))]
+  ```
+
+  Example
+
+  ```scala
+  val a = sc.parallelize(List("dog", "salmon", "salmon", "rat", "elephant"), 3)
+  val b = a.keyBy(_.length)
+  val c = sc.parallelize(List("dog","cat","gnu","salmon","rabbit","turkey","wolf","bear","bee"), 3)
+  val d = c.keyBy(_.length)
+  b.leftOuterJoin(d).collect
+
+  res1: Array[(Int, (String, Option[String]))] = Array((6,(salmon,Some(salmon))), (6,(salmon,Some(rabbit))), (6,(salmon,Some(turkey))), (6,(salmon,Some(salmon))), (6,(salmon,Some(rabbit))), (6,(salmon,Some(turkey))), (3,(dog,Some(dog))), (3,(dog,Some(cat))), (3,(dog,Some(gnu))), (3,(dog,Some(bee))), (3,(rat,Some(dog))), (3,(rat,Some(cat))), (3,(rat,Some(gnu))), (3,(rat,Some(bee))), (8,(elephant,None)))
+  ```
+
+  * SPARK DataFrame
+
+  // Inner join implicit
+  df1.join(df2, df1("field1") === df2("field1"))
+
+  // Inner join explicit
+  df1.join(df2, df1("field1") === df2("field1"), "inner")
+
+  // Left outer join explicit
+  df1.join(df2, df1("field1") === df2("field1"), "left_outer")
+
+  // Right outer join explicit
+  df1.join(df2, df1("field1") === df2("field1"), "right_outer")
 
 :back: [[Back to table of contents]](#table-of-contents)
 
