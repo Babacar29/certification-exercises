@@ -1,4 +1,4 @@
-# Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
+ººtr# Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ## Table of contents
 1. [Introduction](#1-introduction)
@@ -236,7 +236,57 @@ Output line formatting arguments:
 
 ### iv. Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume
 
-coming soon...
+* Setting up an agent
+
+Flume agent configuration is stored in a local configuration file. This is a text file that follows the Java properties file format. Configurations for one or more agents can be specified in the same configuration file. The configuration file includes properties of each source, sink and channel in an agent and how they are wired together to form data flows.
+
+* Configuring individual components
+
+Each component (source, sink or channel) in the flow has a name, type, and set of properties that are specific to the type and instantiation. For example, an Avro source needs a hostname (or IP address) and a port number to receive data from. A memory channel can have max queue size (“capacity”), and an HDFS sink needs to know the file system URI, path to create files, frequency of file rotation (“hdfs.rollInterval”) etc. All such attributes of a component needs to be set in the properties file of the hosting Flume agent.
+
+* Wiring the pieces together
+
+The agent needs to know what individual components to load and how they are connected in order to constitute the flow. This is done by listing the names of each of the sources, sinks and channels in the agent, and then specifying the connecting channel for each sink and source. For example, an agent flows events from an Avro source called avroWeb to HDFS sink hdfs-cluster1 via a file channel called file-channel. The configuration file will contain names of these components and file-channel as a shared channel for both avroWeb source and hdfs-cluster1 sink.
+
+* A simple example
+
+Here, we give an example configuration file, describing a single-node Flume deployment. This configuration lets a user generate events and subsequently logs them to the console.
+
+```
+# example.conf: A single-node Flume configuration
+
+# Name the components on this agent
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+# Describe/configure the source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = localhost
+a1.sources.r1.port = 44444
+
+# Describe the sink
+a1.sinks.k1.type = logger
+
+# Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+# Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+```
+
+This configuration defines a single agent named a1. a1 has a source that listens for data on port 44444, a channel that buffers event data in memory, and a sink that logs event data to the console. The configuration file names the various components, then describes their types and configuration parameters.
+
+Given this configuration file, we can start Flume as follows:
+
+```
+flume-ng agent --conf /etc/flume-ng/conf \
+--conf-file example.conf \
+--name a1 -Dflume.root.logger=INFO,console
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
