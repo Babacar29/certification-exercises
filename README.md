@@ -425,6 +425,7 @@ counts.saveAsTextFile("hdfs://...")
 
   * SPARK DataFrame
 
+  ```scala
   // Inner join implicit
   df1.join(df2, df1("field1") === df2("field1"))
 
@@ -436,6 +437,7 @@ counts.saveAsTextFile("hdfs://...")
 
   // Right outer join explicit
   df1.join(df2, df1("field1") === df2("field1"), "right_outer")
+  ```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
