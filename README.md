@@ -423,21 +423,22 @@ counts.saveAsTextFile("hdfs://...")
   res1: Array[(Int, (String, Option[String]))] = Array((6,(salmon,Some(salmon))), (6,(salmon,Some(rabbit))), (6,(salmon,Some(turkey))), (6,(salmon,Some(salmon))), (6,(salmon,Some(rabbit))), (6,(salmon,Some(turkey))), (3,(dog,Some(dog))), (3,(dog,Some(cat))), (3,(dog,Some(gnu))), (3,(dog,Some(bee))), (3,(rat,Some(dog))), (3,(rat,Some(cat))), (3,(rat,Some(gnu))), (3,(rat,Some(bee))), (8,(elephant,None)))
   ```
 
-  * SPARK DataFrame
+* SPARK DataFrame
 
-  ```scala
-  // Inner join implicit
-  df1.join(df2, df1("field1") === df2("field1"))
 
-  // Inner join explicit
-  df1.join(df2, df1("field1") === df2("field1"), "inner")
+```scala
+// Inner join implicit
+df1.join(df2, df1("field1") === df2("field1"))
 
-  // Left outer join explicit
-  df1.join(df2, df1("field1") === df2("field1"), "left_outer")
+// Inner join explicit
+df1.join(df2, df1("field1") === df2("field1"), "inner")
 
-  // Right outer join explicit
-  df1.join(df2, df1("field1") === df2("field1"), "right_outer")
-  ```
+// Left outer join explicit
+df1.join(df2, df1("field1") === df2("field1"), "left_outer")
+
+// Right outer join explicit
+df1.join(df2, df1("field1") === df2("field1"), "right_outer")
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
