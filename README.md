@@ -363,6 +363,8 @@ hdfs dfs -rm -R [-skipTrash]
 In this example, we use a few transformations to build a dataset of (String, Int) pairs called counts and then save it to a file.
 
 ```scala
+val sparkConf = new SparkConf().setAppName("Spark Application").set("spark.ui.port","4242")
+val sc = new SparkContext(sparkConf)
 val textFile = sc.textFile("hdfs://...")
 val counts = textFile.flatMap(line => line.split(" "))
                  .map(word => (word, 1))
