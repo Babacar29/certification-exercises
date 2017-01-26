@@ -288,6 +288,50 @@ flume-ng agent --conf /etc/flume-ng/conf \
 --name a1 -Dflume.root.logger=INFO,console
 ```
 
+* Some other Examples
+
+  * Spooling Directory Source
+
+  This source lets you ingest data by placing files to be ingested into a “spooling” directory on disk. This source will watch the specified directory for new files, and will parse events out of new files as they appear. The event parsing logic is pluggable. After a given file has been fully read into the channel, it is renamed to indicate completion (or optionally deleted).
+
+ Example for an agent named agent-1:
+
+  ```
+  a1.channels = ch-1
+  a1.sources = src-1
+
+  a1.sources.src-1.type = spooldir
+  a1.sources.src-1.channels = ch-1
+  a1.sources.src-1.spoolDir = /var/log/apache/flumeSpool
+  a1.sources.src-1.fileHeader = true
+  ```
+
+  * HDFS sink
+
+  This sink writes events into the Hadoop Distributed File System (HDFS). It currently supports creating text (`DataStream`) and `SequenceFile` (default). It supports compression in both file types. The files can be rolled (close current file and create a new one) periodically based on the elapsed time or size of data or number of events. It also buckets/partitions data by attributes like timestamp or machine where the event originated.
+  
+  Example for agent named a1:
+
+  ```
+  a1.channels = c1
+  a1.sinks = k1
+  a1.sinks.k1.type = hdfs
+  a1.sinks.k1.channel = c1
+  a1.sinks.k1.hdfs.path = /flume/events/%y-%m-%d/%H%M/%S
+  a1.sinks.k1.hdfs.filePrefix = events-
+  a1.sinks.k1.hdfs.round = true
+  a1.sinks.k1.hdfs.roundValue = 10
+  a1.sinks.k1.hdfs.roundUnit = minute
+  a1.sinks.k1.hdfs.rollInterval = 0
+  a1.sinks.k1.hdfs.rollSize = 524288
+  a1.sinks.k1.hdfs.rollCount = 0
+  a1.sinks.k1.hdfs.fileType = DataStream
+  ```
+
+  The above configuration will round down the timestamp to the last 10th minute. For example, an event with timestamp 11:54:34 AM, June 12, 2012 will cause the hdfs path to become /flume/events/2012-06-12/1150/00.
+
+
+
 :back: [[Back to table of contents]](#table-of-contents)
 
 ### v. Load data into and out of HDFS using the Hadoop File System (FS) commands
