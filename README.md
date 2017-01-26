@@ -446,7 +446,10 @@ df1.join(df2, df1("field1") === df2("field1"), "right_outer")
 
 ### iii. Calculate aggregate statistics (e.g., average or sum) using Spark
 
-coming soon...
+
+```scala
+rdd.mapValues(value => (value, 1)).reduceByKey((x, y) => (x._1 + y._1, x._2 + y._2)).map{case (word,(sumValues,count)) => (word,sumValues/count)}
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
