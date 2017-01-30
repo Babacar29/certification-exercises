@@ -463,7 +463,7 @@ rdd.mapValues(value => (value, 1)).reduceByKey((x, y) => (x._1 + y._1, x._2 + y.
 val textFile = sc.textFile("hdfs://...")
 textFile.mapPartitions(lines =>
   lines.map(line =>
-    line.splitBy(",")))
+    line.split(",")))
     .filter(line => line(0).contains("ERRROR"))
 ```
 
