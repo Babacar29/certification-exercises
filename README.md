@@ -457,7 +457,25 @@ rdd.mapValues(value => (value, 1)).reduceByKey((x, y) => (x._1 + y._1, x._2 + y.
 
 ### iv. Filter data into a smaller dataset using Spark
 
-coming soon...
+* SPARK RDD
+
+```scala
+val textFile = sc.textFile("hdfs://...")
+textFile.mapPartitions(lines =>
+  lines.map(line =>
+    line.splitBy(",")))
+    .filter(line => line(0).contains("ERRROR"))
+```
+
+* SPARK DataFrame
+
+```scala
+val textFile = sc.textFile("hdfs://...")
+
+// Creates a DataFrame having a single column named "line"
+val df = textFile.toDF("line")
+val errors = df.filter(col("line").like("%ERROR%"))
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
