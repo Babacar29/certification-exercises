@@ -481,7 +481,22 @@ val errors = df.filter(col("line").like("%ERROR%"))
 
 ### v. Write a query that produces ranked or sorted data using Spark
 
-coming soon...
+```scala
+testDF.sort(testDF("id").desc)
+```
+
+```scala
+import org.apache.spark.sql.SQLContext
+val sparkConf = new SparkConf().setAppName("Spark Application").set("spark.ui.port","4242")
+val sc = new SparkContext(sparkConf)
+val sqlCtx = new SQLContext(sc)
+
+testDF.registerTempTable("test")
+val orderedDF = sqlCtx.sql("""SELECT * FROM test ORDER BY id DESC""")
+
+//Print some rows of the DataFrame
+orderedDF.show()
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
