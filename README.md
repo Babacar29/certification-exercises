@@ -464,7 +464,7 @@ val textFile = sc.textFile("hdfs://...")
 textFile.mapPartitions(lines =>
   lines.map(line =>
     line.split(",")))
-    .filter(line => line(0).contains("ERRROR"))
+.filter(line => line(0).contains("ERRROR"))
 ```
 
 * SPARK DataFrame
@@ -480,6 +480,18 @@ val errors = df.filter(col("line").like("%ERROR%"))
 :back: [[Back to table of contents]](#table-of-contents)
 
 ### v. Write a query that produces ranked or sorted data using Spark
+
+* SPARK RDD
+
+```scala
+val textFile = sc.textFile("hdfs://...")
+textFile.map(line =>
+    line.split(",")))
+.map(array => (array(0),array(1)))
+.sortByKey()
+```
+
+* SPARK DataFrame
 
 ```scala
 testDF.sort(testDF("id").desc)
