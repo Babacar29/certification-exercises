@@ -727,10 +727,10 @@ Before:
 
 New:
 
-- Rename *name* to *id*
-- Change type of *favorite_number* from *int* to *long*
-- Remove *favorite_color*
-- Add address field
+\- Rename *name* to *id*  
+\- Change type of *favorite_number* from *int* to *long*  
+\- Remove *favorite_color*  
+\- Add address field  
 
 ```json
 {"name": "user",
