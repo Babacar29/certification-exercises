@@ -701,7 +701,63 @@ SET hive.exec.dynamic.partition.mode=nonstrict;
 
 ### v. Evolve an Avro schema by changing JSON files
 
-coming soon...
+* Compatible changes
+
+  - Change a default value for a field
+  - Add a new field with a default value
+  - Add an alias for a field
+  - Remove a field that specified a default value
+  - Change field's type to a wider type, for example, int to long.
+  - Modify a doc attribute (add, change or delete)
+
+* Examples
+
+Before:
+
+```json
+{"name": "user",
+"type": "record",
+"fields": [
+    {"name": "name", "type": "string"},
+    {"name": "favorite_number",  "type": ["int", "null"]},
+    {"name": "favorite_color", "type": ["string", "null"]}
+]
+}
+```
+
+New:
+
+- Rename *name* to *id*
+- Change type of *favorite_number* from *int* to *long*
+- Remove *favorite_color*
+- Add address field
+
+```json
+{"name": "user",
+"type": "record",
+"fields": [
+    {"name": "id", "type": "string"},
+    {"name": "favorite_number",  "type": ["long", "null"]},
+    {"name": "address", "type": ["string", "null"]}
+]
+}
+```
+
+After compatibility Changes:
+
+```json
+{"name": "user",
+"type": "record",
+"fields": [
+    {"name": "name", "type": "string",
+      "aliases":["id"]},
+    {"name": "favorite_number",  "type": ["long", "null"]},
+    {"name": "address", "type": ["string", "null"], "default":null}
+]
+}
+```
+
+
 
 :back: [[Back to table of contents]](#table-of-contents)
 
