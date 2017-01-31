@@ -645,7 +645,42 @@ TBLPROPERTIES ('avro.schema.literal'=
 
 ### iv. Improve query performance by creating partitioned tables in the Hive metastore
 
-coming soon...
+Create table:
+
+```sql
+CREATE EXTERNAL TABLE customers (customer_id INT, name STRING,
+     adress STRING, email STRING,
+     ip STRING COMMENT 'IP Address of the User')
+ PARTITIONED BY(state STRING)
+ ROW FORMAT DELIMITED
+   FIELDS TERMINATED BY ','
+STORED AS PARQUET
+LOCATION '/data/customers_by_state';
+```
+
+* Dynamic Partitioning
+
+```sql
+INSERT OVERWRITE TABLE customers
+PARTITION(state)
+SELECT customer_id, name, adress, email,
+state FROM customers_tmp;
+```
+
+Based on the value of the last column (state), partitions are automaticallly created if the partition doesn't exist. If the partition exist it will be overwritten.
+
+* Static Partitioning
+
+```sql
+ALTER TABLE customers
+ADD PARTITION (state='UK');
+```
+
+```sql
+LOAD DATA INPATH '/stagingData/customers_data.csv'
+INTO TABLE customers
+PARTITION(state='UK');
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
