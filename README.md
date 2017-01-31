@@ -537,7 +537,7 @@ coming soon...
 
 ### ii. Extract an Avro schema from a set of datafiles using avro-tools
 
-Download [*avro-tools*](http://apache.uvigo.es/avro/avro-1.8.1/java/avro-tools-1.8.1.jar).
+* Download [*avro-tools*](http://apache.uvigo.es/avro/avro-1.8.1/java/avro-tools-1.8.1.jar).
 
 * Run the following to extract schema from a datafile
 
