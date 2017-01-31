@@ -86,7 +86,7 @@ sqoop import --table table1 \
 Argument | Description
 --- | ---
 --check-column (col) | Specifies the column to be examined when determining which rows to import.
---incremental (mode) | Specifies how Sqoop determines which rows are new. Legal values for mode include append and lastmodified.
+--incremental (mode) | Specifies how Sqoop determines which rows are new. Legal values for mode include `append` and `lastmodified`.
 --last-value (value) | Specifies the maximum value of the check column from the previous import.
 
 You should specify append mode when importing a table where new rows are continually being added with increasing row id values. You specify the column containing the row’s id with `--check-column`. Sqoop imports rows where the check column has a value greater than the one specified with `--last-value`.
