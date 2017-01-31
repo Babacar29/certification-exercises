@@ -537,7 +537,25 @@ coming soon...
 
 ### ii. Extract an Avro schema from a set of datafiles using avro-tools
 
-coming soon...
+Download [*avro-tools*](http://apache.uvigo.es/avro/avro-1.8.1/java/avro-tools-1.8.1.jar).
+
+* Run the following to extract schema from a datafile
+
+```
+java -jar avro-tools*.jar getschema datafile.avro
+```
+
+```json
+{"namespace": "example.avro",
+ "type": "record",
+ "name": "User",
+ "fields": [
+     {"name": "name", "type": "string"},
+     {"name": "favorite_number",  "type": ["int", "null"]},
+     {"name": "favorite_color", "type": ["string", "null"]}
+ ]
+}
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
