@@ -446,11 +446,24 @@ df1.join(df2, df1("field1") === df2("field1"), "right_outer")
 
 ### iii. Calculate aggregate statistics (e.g., average or sum) using Spark
 
+* SPARK RDD
+
 Below an average example can be seen:
 
 ```scala
 rdd.mapValues(value => (value, 1)).reduceByKey((x, y) => (x._1 + y._1, x._2 + y._2))
 .map{case (word,(sumValues,count)) => (word,sumValues.toFloat/count.toFloat)}
+```
+
+* SPARK DataFrame
+
+```scala
+// In 1.3.x, in order for the grouping column "department" to show up,
+// it must be included explicitly as part of the agg function call.
+df.groupBy("department").agg($"department", max("age"), sum("expense"))
+
+// In 1.4+, grouping column "department" is included automatically.
+df.groupBy("department").agg(max("age"), sum("expense"))
 ```
 
 :back: [[Back to table of contents]](#table-of-contents)
