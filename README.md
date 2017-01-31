@@ -486,7 +486,7 @@ val errors = df.filter(col("line").like("%ERROR%"))
 ```scala
 val textFile = sc.textFile("hdfs://...")
 textFile.map(line =>
-    line.split(",")))
+    line.split(","))
 .map(array => (array(0),array(1)))
 .sortByKey()
 ```
