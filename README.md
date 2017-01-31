@@ -682,6 +682,21 @@ INTO TABLE customers
 PARTITION(state='UK');
 ```
 
+* Repair table
+
+If partitions are created outside Impala and Hive, use the following sentence to recreate partitions of the table.
+
+```sql
+MSCK REPAIR TABLE customers;
+```
+
+* Enable/Disable Dynamic partitioning
+
+```
+SET hive.exec.dynamic.partition=true;
+SET hive.exec.dynamic.partition.mode=nonstrict;
+```
+
 :back: [[Back to table of contents]](#table-of-contents)
 
 ### v. Evolve an Avro schema by changing JSON files
