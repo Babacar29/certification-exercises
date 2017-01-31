@@ -1,4 +1,4 @@
-ººtr# Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
+# Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ## Table of contents
 1. [Introduction](#1-introduction)
