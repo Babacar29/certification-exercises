@@ -20,6 +20,8 @@
   3. [Create a table in the Hive metastore using the Avro file format and an external schema file](#iii-create-a-table-in-the-hive-metastore-using-the-avro-file-format-and-an-external-schema-file)
   4. [Improve query performance by creating partitioned tables in the Hive metastore](#iv-improve-query-performance-by-creating-partitioned-tables-in-the-hive-metastore)
   5. [Evolve an Avro schema by changing JSON files](#v-evolve-an-avro-schema-by-changing-json-files)
+5. [Annex](#5-annex)
+  1. [Run a Spark Application](#i-run-a-spark-application)
 
 ## 1. Introduction
 
@@ -554,5 +556,12 @@ coming soon...
 ### v. Evolve an Avro schema by changing JSON files
 
 coming soon...
+
+:back: [[Back to table of contents]](#table-of-contents)
+
+## 5. Annex
+
+### i. Run a Spark Application
+
 
 :back: [[Back to table of contents]](#table-of-contents)
