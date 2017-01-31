@@ -710,7 +710,7 @@ SET hive.exec.dynamic.partition.mode=nonstrict;
   - Change field's type to a wider type, for example, int to long.
   - Modify a doc attribute (add, change or delete)
 
-* Examples
+* Example:
 
 Before:
 
