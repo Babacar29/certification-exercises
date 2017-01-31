@@ -548,7 +548,7 @@ java -jar avro-tools*.jar getschema datafile.avro
 ```json
 {"namespace": "example.avro",
  "type": "record",
- "name": "User",
+ "name": "user",
  "fields": [
      {"name": "name", "type": "string"},
      {"name": "favorite_number",  "type": ["int", "null"]},
@@ -561,7 +561,31 @@ java -jar avro-tools*.jar getschema datafile.avro
 
 ### iii. Create a table in the Hive metastore using the Avro file format and an external schema file
 
-coming soon...
+
+* Use an external schema file to create an avro table
+
+```sql
+CREATE TABLE customers_avro
+STORED AS AVRO
+TBLPROPERTIES ('avro.schema.url'=
+'hdfs://localhost/data/customers_schema.json');
+```
+
+* Create an avro table specifying the metadata
+
+```sql
+CREATE TABLE customers_avro
+STORED AS AVRO
+TBLPROPERTIES ('avro.schema.literal'=
+'{"name": "user",
+"type": "record",
+"fields": [
+    {"name": "name", "type": "string"},
+    {"name": "favorite_number",  "type": ["int", "null"]},
+    {"name": "favorite_color", "type": ["string", "null"]}
+]
+}');
+```
 
 :back: [[Back to table of contents]](#table-of-contents)
 
