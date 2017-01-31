@@ -666,7 +666,7 @@ Options:
   total number of executors = number of executors per node * number of instances -1
   ```
 
-  * Example
+  * Example of spark-submit
 
   ```
   spark-submit --class com.test.driver.Main \
@@ -682,5 +682,17 @@ Options:
   --conf "spark.executor.extraJavaOptions= -DvariableName=value" \
   target/transformation-1.0.jar argument1  
   ```
+
+  * Log4j properties configuration
+
+    * Copy `/etc/spark/conf/log4j.properties.template` to your working directory and rename it to log4j.properties.
+
+    * Edit log4j.properties.
+      The first line currently has:
+
+      `log4j.rootCategory=INFO, console`
+
+      You can replace INFO with DEBUG or WARN depending on which level you want to see on log file.
+
 
 :back: [[Back to table of contents]](#table-of-contents)
