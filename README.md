@@ -374,6 +374,45 @@ val counts = textFile.flatMap(line => line.split(" "))
 counts.saveAsTextFile("hdfs://...")
 ```
 
+When case classes cannot be defined ahead of time (for example, the structure of records is encoded in a string, or a text dataset will be parsed and fields will be projected differently for different users), a DataFrame can be created programmatically with three steps.
+
+Create an RDD of Rows from the original RDD;
+Create the schema represented by a StructType matching the structure of Rows in the RDD created in Step 1.
+Apply the schema to the RDD of Rows via createDataFrame method provided by SQLContext.
+For example:
+
+```scala
+// Create an RDD
+val people = sc.textFile("examples/src/main/resources/people.txt")
+
+// The schema is encoded in a string
+val schemaString = "name age"
+
+// Import Row.
+import org.apache.spark.sql.Row;
+
+// Import Spark SQL data types
+import org.apache.spark.sql.types.{StructType,StructField,StringType};
+
+// Generate the schema based on the string of schema
+val schema =
+  StructType(
+    schemaString.split(" ").map(fieldName => StructField(fieldName, StringType, true)))
+
+// Convert records of the RDD (people) to Rows.
+val rowRDD = people.map(_.split(",")).map(p => Row(p(0), p(1).trim))
+
+// Apply the schema to the RDD.
+val peopleDataFrame = sqlContext.createDataFrame(rowRDD, schema)
+```
+
+You can also manually specify the data source that will be used along with any extra options that you would like to pass to the data source. Data sources are specified by their fully qualified name (i.e., org.apache.spark.sql.parquet), but for built-in sources you can also use their short names (json, parquet, jdbc). DataFrames of any type can be converted into other types using this syntax.
+
+```scala
+val df = sqlContext.read.format("json").load("examples/src/main/resources/people.json")
+df.select("name", "age").write.format("parquet").save("namesAndAges.parquet")
+```
+
 :back: [[Back to table of contents]](#table-of-contents)
 
 ### ii. Join disparate datasets together using Spark
