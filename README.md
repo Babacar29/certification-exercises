@@ -376,10 +376,11 @@ counts.saveAsTextFile("hdfs://...")
 
 When case classes cannot be defined ahead of time (for example, the structure of records is encoded in a string, or a text dataset will be parsed and fields will be projected differently for different users), a DataFrame can be created programmatically with three steps.
 
-Create an RDD of Rows from the original RDD;
-Create the schema represented by a StructType matching the structure of Rows in the RDD created in Step 1.
-Apply the schema to the RDD of Rows via createDataFrame method provided by SQLContext.
-For example:
+  * Create an RDD of Rows from the original RDD;
+  * Create the schema represented by a StructType matching the structure of Rows in the RDD created in Step 1.
+  * Apply the schema to the RDD of Rows via createDataFrame method provided by SQLContext.  
+  
+  For example:
 
 ```scala
 // Create an RDD
