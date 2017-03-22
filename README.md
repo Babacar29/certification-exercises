@@ -22,6 +22,7 @@
   5. [Evolve an Avro schema by changing JSON files](#v-evolve-an-avro-schema-by-changing-json-files)
 5. [Annex](#5-annex)
   1. [Run a Spark Application](#i-run-a-spark-application)
+  2. [Kafka command line](#ii-kafka-command-line)
 
 ## 1. Introduction
 
@@ -953,3 +954,35 @@ Options:
 
 
 :back: [[Back to table of contents]](#table-of-contents)
+
+### ii. Kafka command line
+
+* List topics:
+```shell
+/usr/bin/kafka-topics --list --zookeeper cloudera1.localdomain:2181
+```
+
+* Create topic:
+```shell
+/usr/bin/kafka-topics --create --zookeeper cloudera1.localdomain:2181 --replication-factor 1 --partitions 1 --topic kafkaTopic
+```
+
+* Read from topic:
+```shell
+/usr/bin/kafka-console-consumer --zookeeper cloudera1.localdomain:2181 --topic kafkaTopic
+```
+
+* Write to topic:
+```shell
+/usr/bin/kafka-console-producer --broker-list kafka01.cloudera1.localdomain.com:9092,kafka02.cloudera1.localdomain.com --topic kafkaTopic
+```
+
+* Delete topic:
+```shell
+/usr/bin/kafka-topics --delete --topic test --zookeeper cloudera1.localdomain:2181
+```
+> :exclamation: Delete topics must be enabled in Kafka’s configuration.
+
+:back: [[Back to table of contents]](#table-of-contents)
+
+
