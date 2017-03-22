@@ -1,9 +1,10 @@
 # Theory focused on the required skills of CCA Spark and Hadoop Developer Certification
 
 ## Table of contents
+
 1. [Introduction](#1-introduction)
 2. [Data Ingest](#2-data-ingest)
- 1. [Import data from a MySQL database into HDFS using Sqoop](#i-import-data-from-a-mysql-database-into-hdfs-using-sqoop)
+  i. [Import data from a MySQL database into HDFS using Sqoop](#i-import-data-from-a-mysql-database-into-hdfs-using-sqoop)
  2. [Export data to a MySQL database from HDFS using Sqoop](#ii-export-data-to-a-mysql-database-from-hdfs-using-sqoop)
  3. [Change the delimiter and file format of data during import using Sqoop](#iii-change-the-delimiter-and-file-format-of-data-during-import-using-sqoop)
  4. [Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume](#iv-ingest-real-time-and-near-real-time-nrt-streaming-data-into-hdfs-using-flume)
@@ -23,6 +24,7 @@
 5. [Annex](#5-annex)
   1. [Run a Spark Application](#i-run-a-spark-application)
   2. [Kafka command line](#ii-kafka-command-line)
+
 
 ## 1. Introduction
 
