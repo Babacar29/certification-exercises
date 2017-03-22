@@ -981,7 +981,7 @@ Options:
 
 * Delete topic:
 ```shell
-/usr/bin/kafka-topics --delete --topic test --zookeeper cloudera1.localdomain:2181
+/usr/bin/kafka-topics --delete --topic kafkaTopic --zookeeper cloudera1.localdomain:2181
 ```
 > :exclamation: Delete topics must be enabled in Kafka’s configuration.
 
